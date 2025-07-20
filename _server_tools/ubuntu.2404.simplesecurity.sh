@@ -12,7 +12,6 @@ userdel uucp
 sed -i 's/#AllowTcpForwarding no/AllowTcpForwarding no/g' /etc/ssh/sshd_config
 sed -i 's/#AllowTcpForwarding yes/AllowTcpForwarding no/g' /etc/ssh/sshd_config
 sed -i 's/AllowTcpForwarding yes/AllowTcpForwarding no/g' /etc/ssh/sshd_config
-cat /etc/ssh/sshd_config | grep AllowTcpForwarding
 
 # Change some permissions to be more strict
 chmod 751 /var/log
