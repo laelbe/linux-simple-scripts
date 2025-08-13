@@ -75,6 +75,9 @@ sed -i '1i :programname, isequal, "CRON" ~' /etc/rsyslog.d/50-default.conf
 sed -i 's/#daemon\./daemon\./g' /etc/rsyslog.d/50-default.conf
 sed -i 's/#cron\./cron\./g' /etc/rsyslog.d/50-default.conf
 
+echo "*.info /var/log/info.log" >> /etc/rsyslog.d/50-default.conf
+echo "*.alert /var/log/alert.log" >> /etc/rsyslog.d/50-default.conf
+
 echo "local6.debug /var/log/command.log" >> /etc/rsyslog.d/50-default.conf
 touch /var/log/command.log
 chown syslog:adm /var/log/command.log
