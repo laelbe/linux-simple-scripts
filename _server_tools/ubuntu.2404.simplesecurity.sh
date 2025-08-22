@@ -66,9 +66,8 @@ chmod 600 /etc/login.defs
 sed -i 's/#SULOG_FILE\s\/var\/log\/sulog/SULOG_FILE\t\/var\/log\/sulog/g' /etc/login.defs
 echo "PASS_MIN_LEN 8" >> /etc/login.defs
 
-# locked out for 120 seconds, when 5 fail
-cd /usr/lib/x86_64-linux-gnu/security/ && ln -s pam_faillock.so pam_tally2.so
-sed -i '1s/^/auth\trequired\t\t\tpam_tally2.so deny=5 unlock_time=120\n\n/' /etc/pam.d/common-auth
+# login attempts will be blocked for 120 seconds, when 5 consecutive login failures
+sed -i '1s/^/auth\trequired\t\t\tpam_faillock.so deny=5 unlock_time=120\n\n/' /etc/pam.d/common-auth
 
 # rsyslog
 chmod 600 /etc/rsyslog.conf
